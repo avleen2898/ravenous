@@ -56,6 +56,7 @@ class SearchBar extends React.Component {
     e.preventDefault();
     if (this.state.term === '' || this.state.location === '') {
       document.querySelector('.SearchBar-invalid').style.display = 'block';
+      this.handleBusinessesUpdate();
       return;
     }
     this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
@@ -66,6 +67,10 @@ class SearchBar extends React.Component {
     if (e.keyCode === 13) {
       this.handleSearch(e);
     }
+  }
+
+  handleBusinessesUpdate() {
+    this.props.updateBusinesses();
   }
 
   renderSortByOptions() {

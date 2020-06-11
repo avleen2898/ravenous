@@ -15,10 +15,13 @@ class BusinessList extends React.Component {
         {this.searchResults()}
         {
           this.props.businesses.length > 0 ?
-            <div className="BusinessList">
-              {this.props.businesses.map(business => {
-                 return <Business key={business.id} business={business}/>
-               })}
+            <div>
+              <h2> Displaying {this.props.businesses.length} results for {this.props.term} in {this.props.location} </h2>
+              <div className="BusinessList">
+                {this.props.businesses.map(business => {
+                  return <Business key={business.id} business={business}/>
+                 })}
+               </div>
             </div> :
             <div>{}</div>
         }
