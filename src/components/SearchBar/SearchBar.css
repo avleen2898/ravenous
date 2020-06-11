@@ -74,8 +74,11 @@
     transition: background-color .5s;
 }
 
-.invalid-input {
-    visibility: hidden;
+.SearchBar-invalid {
+    display: none;
+    text-align: center;
+    margin-bottom: 2.88rem;
+    background-color: whitesmoke;
 }
 
 .SearchBar-submit a:hover {
