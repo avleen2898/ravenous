@@ -57,6 +57,10 @@
     margin-right: 0;
 }
 
+.SearchBar-fields input:focus {
+    border: 1px solid black;
+}
+
 .SearchBar-submit {
     text-align: center;
 }
@@ -68,6 +72,10 @@
     color: #ffffff;
     font-weight: 600;
     transition: background-color .5s;
+}
+
+.invalid-input {
+    visibility: hidden;
 }
 
 .SearchBar-submit a:hover {

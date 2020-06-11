@@ -43,15 +43,21 @@ class SearchBar extends React.Component {
   }
 
   handleTermChange(e) {
+    document.querySelector('.invalid-input').style.visibility = 'hidden';
     this.setState({term: e.target.value});
   }
 
   handleLocationChange(e) {
+    document.querySelector('.invalid-input').style.visibility = 'hidden';
     this.setState({location: e.target.value});
   }
 
   handleSearch(e) {
     e.preventDefault();
+    if (this.state.term === '' || this.state.location === '') {
+      document.querySelector('.invalid-input').style.visibility = 'visible';
+      return;
+    }
     this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
     this.setState({term: '', location: ''});
   }
@@ -78,11 +84,14 @@ class SearchBar extends React.Component {
           </ul>
         </div>
         <div className="SearchBar-fields">
-          <input placeholder="Search Businesses" value={this.state.term} onChange={this.handleTermChange} />
-          <input placeholder="Where?" value={this.state.location} onChange={this.handleLocationChange} />
+          <input placeholder="Search Businesses" value={this.state.term} onChange={this.handleTermChange} required/>
+          <input placeholder="Where?" value={this.state.location} onChange={this.handleLocationChange} required/>
+        </div>
+        <div className="invalid-input">
+          Please enter both fields before searching
         </div>
         <div className="SearchBar-submit">
-          <a onClick={this.handleSearch}>Let's Go</a>
+          <a onClick={this.handleSearch}>Let's Go!</a>
         </div>
       </div>
     );
